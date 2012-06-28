@@ -4,3 +4,6 @@
 [submodule "public/vendor/normalize.css"]
 	path = public/vendor/normalize.css
 	url = git://github.com/necolas/normalize.css.git
+[submodule "public/vendor/Seriously.js"]
+	path = public/vendor/Seriously.js
+	url = git://github.com/brianchirls/Seriously.js.git
