@@ -11,7 +11,6 @@ var express = require('express')
 
 var app = express();
 
-
 app.configure(function(){
   app.set('port', process.env.PORT || 3000);
   app.set('views', __dirname + '/views');
@@ -28,23 +27,18 @@ app.configure('development', function(){
   app.use(express.errorHandler());
 });
 
-// app.get('/', routes.index);
-app.get('/', function (req, res) {
-  res.sendfile(__dirname + '/index.html');
-});
+app.get('/', routes.index);
 
 var io = socketio.listen(http.createServer(app).listen(app.get('port'), function(){
   console.log("Express server listening on port " + app.get('port'));
 }));
 
-
+io.set('log level', 1);
 
 // arduino
 var board = new arduino.Board({
   debug: false
 });
-
-
 
 var sensor = new arduino.Sensor({
   board: board,
@@ -59,9 +53,9 @@ io.sockets.on('connection', function (socket) {
     socket.emit('news', { hello: value});
   });
 
-  socket.emit('news', { hello: 'world' });
-  socket.on('my other event', function (data) {
-    console.log(data);
-  });
+  // socket.emit('news', { hello: 'world' });
+  // socket.on('my other event', function (data) {
+  //   console.log(data);
+  // });
 });
 
