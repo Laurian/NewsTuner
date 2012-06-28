@@ -37,24 +37,31 @@ var io = socketio.listen(http.createServer(app).listen(app.get('port'), function
   console.log("Express server listening on port " + app.get('port'));
 }));
 
-io.sockets.on('connection', function (socket) {
-  socket.emit('news', { hello: 'world' });
-  socket.on('my other event', function (data) {
-    console.log(data);
-  });
-});
+
 
 // arduino
 var board = new arduino.Board({
   debug: false
 });
 
+
+
 var sensor = new arduino.Sensor({
   board: board,
   pin: 'A0'
 });
 
-// sensor.on('read', function(err, value) {
-//   value = +value;
-//   console.log(value);
-// });
+io.sockets.on('connection', function (socket) {
+
+  sensor.on('read', function(err, value) {
+    value = +value;
+    // console.log(value);
+    socket.emit('news', { hello: value});
+  });
+
+  socket.emit('news', { hello: 'world' });
+  socket.on('my other event', function (data) {
+    console.log(data);
+  });
+});
+
