@@ -1,0 +1,6 @@
+[submodule "public/vendor/processing-js"]
+	path = public/vendor/processing-js
+	url = git://github.com/processing-js/processing-js.git
+[submodule "public/vendor/normalize.css"]
+	path = public/vendor/normalize.css
+	url = git://github.com/necolas/normalize.css.git
