@@ -1,7 +1,7 @@
 extends layout
 
 block content
-  h1= title
+  //h1= title
   video#video(width="960", height="540", controls, preload, autoplay)
     source(src="/video/wtf_greenscreen_sm.webm", type='video/webm; codecs="vp8, vorbis"')
     source(src="/video/wtf_greenscreen_sm.mp4", type='video/mp4')
@@ -19,5 +19,17 @@ block content
     video = seriously.source('#video');
     target = seriously.target('#viewport');
 
-    target.source = video;
+    //var vignette = seriously.effect('vignette');
+    //vignette.source = video;
+    //target.source = vignette;
+
+    //target.source = video;
+
+    //vignette.amount = 10;
+
+    var nightvision = seriously.effect('nightvision');
+    nightvision.source = video;
+    target.source = nightvision;
+    nightvision.amplification = 1;
+
     seriously.go();

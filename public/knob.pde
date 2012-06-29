@@ -10,6 +10,9 @@ void setup()
   textFont(fontA, 14);  
 
   window.knob = function(data) {
+
+    window.nightvision.luminanceThreshold = data.A0/1023;
+
   	background(125, 0);
 
   	pushMatrix(); 
