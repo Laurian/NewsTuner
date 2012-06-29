@@ -2,15 +2,26 @@ doctype 5
 html
   head
     title= title
+    link(rel='stylesheet', href='/vendor/normalize.css/normalize.css')
     link(rel='stylesheet', href='/stylesheets/style.css')
+    script(src='/vendor/Modernizr/modernizr.js')
+    script
+        Modernizr.addTest('retina', function () {
+            return (window.devicePixelRatio == 2);
+        });
+    script(src='/vendor/processing-js/processing.js')
+    script(src='/vendor/Seriously.js/seriously.js')
+    script(src='/socket.io/socket.io.js')
+
   body
     block content
-    div
-    | <script src="/socket.io/socket.io.js"></script>
-    | <script>
-    |   var socket = io.connect('http://localhost:3000');
-    |  socket.on('news', function (data) {
-    |     console.log(data);
-    |     socket.emit('my other event', { my: 'data' });
-    |   });
-    | </script>
+    script
+        var socket = io.connect('http://localhost:3000');
+        socket.on('news', function (data) {
+            if (typeof knob != 'undefined') {
+                knob(data);
+            }
+            console.log(data);
+            //socket.emit('my other event', { my: 'data' });
+        });
+    

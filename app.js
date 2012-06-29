@@ -47,10 +47,16 @@ var sensor = new arduino.Sensor({
 
 io.sockets.on('connection', function (socket) {
 
+  var previousValue = 0;
+
   sensor.on('read', function(err, value) {
-    value = +value;
-    // console.log(value);
-    socket.emit('news', { hello: value});
+    value = parseInt(value);
+    var diff = Math.pow(previousValue - value, 2);
+    if (diff > 4) {
+      console.log(value + " >>> " + diff);
+      previousValue = value;
+      socket.emit('news', {A0: value});
+    }
   });
 
   // socket.emit('news', { hello: 'world' });

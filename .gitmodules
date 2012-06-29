@@ -7,3 +7,6 @@
 [submodule "public/vendor/Seriously.js"]
 	path = public/vendor/Seriously.js
 	url = git://github.com/brianchirls/Seriously.js.git
+[submodule "public/vendor/Modernizr"]
+	path = public/vendor/Modernizr
+	url = git://github.com/Modernizr/Modernizr.git
