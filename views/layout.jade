@@ -4,6 +4,18 @@ html
     title= title
     link(rel='stylesheet', href='/vendor/normalize.css/normalize.css')
     link(rel='stylesheet', href='/stylesheets/style.css')
+    style
+        #video {
+            display: none;
+        }
+        #display {
+            position: relative;
+        }
+        #display > canvas {
+            position: absolute;
+            top:    0;
+            left:   0;        
+        }
     script(src='/vendor/Modernizr/modernizr.js')
     script
         Modernizr.addTest('retina', function () {
@@ -11,6 +23,9 @@ html
         });
     script(src='/vendor/processing-js/processing.js')
     script(src='/vendor/Seriously.js/seriously.js')
+    script(src='/vendor/Seriously.js/effects/seriously.vignette.js')
+    script(src='/vendor/Seriously.js/effects/seriously.hue-saturation.js')
+    script(src='/vendor/Seriously.js/effects/seriously.split.js')
     script(src='/socket.io/socket.io.js')
 
   body

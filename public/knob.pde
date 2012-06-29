@@ -2,7 +2,7 @@
 void setup()
 {
   size(200,200);
-  background(125);
+  //background(125);
   fill(255);
   smooth();
   noLoop();
@@ -10,7 +10,7 @@ void setup()
   textFont(fontA, 14);  
 
   window.knob = function(data) {
-  	background(125);
+  	background(125, 0);
 
   	pushMatrix(); 
   	translate(100, 100);

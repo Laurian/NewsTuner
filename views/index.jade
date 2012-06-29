@@ -2,4 +2,22 @@ extends layout
 
 block content
   h1= title
-  canvas#viewport(data-processing-sources='knob.pde')
+  video#video(width="960", height="540", controls, preload, autoplay)
+    source(src="/video/wtf_greenscreen_sm.webm", type='video/webm; codecs="vp8, vorbis"')
+    source(src="/video/wtf_greenscreen_sm.mp4", type='video/mp4')
+     
+  div#display      
+    canvas#viewport(width='960', height='540')
+    canvas#hud(width='960', height='540', data-processing-sources='knob.pde')
+
+  script
+    var seriously,
+    video, 
+    target;
+
+    seriously = new Seriously();
+    video = seriously.source('#video');
+    target = seriously.target('#viewport');
+
+    target.source = video;
+    seriously.go();
